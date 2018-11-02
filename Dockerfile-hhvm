@@ -1,0 +1,17 @@
+FROM hhvm/hhvm-proxygen:latest
+
+RUN apt-get update -y && apt-get install -y curl
+
+# Install composer
+RUN mkdir /opt/composer
+RUN curl -sS https://getcomposer.org/installer | hhvm --php -- --install-dir=/opt/composer
+
+# Install your app
+RUN rm -rf /var/www
+ADD app /var/www
+RUN cd /var/www && hhvm /opt/composer/composer.phar install
+
+# Reconfigure HHVM
+ADD config/hhvm.prod.ini /etc/hhvm/site.ini
+
+EXPOSE 80

@@ -1,0 +1,13 @@
+{
+    "name": "guahanweb/app",
+    "description": "Dockerized test application",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henson, Garth",
+            "email": "garth@guahanweb.com"
+        }
+    ],
+    "require": {}
+}
